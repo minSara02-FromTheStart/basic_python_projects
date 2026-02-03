@@ -1,0 +1,6 @@
+200.0,food,breakfast
+500.0,food,dinner
+50000.0,travel,korea
+9000000.0,travel,japan
+1000000000000.0,travel,indonesia
+6000000.0,shopping,dress
