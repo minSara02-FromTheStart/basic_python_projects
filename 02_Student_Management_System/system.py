@@ -34,17 +34,43 @@ def Search_student():
             print(f"ID: {student['ID']}, Name: {student['Name']}, Age: {student['Age']}, Class: {student['Class']}\n")
             return
 
-    # runs only if loop finishes without finding
     print("Student not found.\n")
 
-        
+def Update_student():
+    update_id = input("Enter Student ID to update: ")
+
+    if not students:
+        print("No students found.\n")
+        return
+
+    for student in students:
+        if student['ID'] == update_id:
+            print("\nStudent Found. Enter new details (press Enter to keep old value):")
+
+            new_name = input(f"Enter new Name ({student['Name']}): ")
+            new_age = input(f"Enter new Age ({student['Age']}): ")
+            new_class = input(f"Enter new Class ({student['Class']}): ")
+
+            if new_name:
+                student['Name'] = new_name
+            if new_age:
+                student['Age'] = new_age
+            if new_class:
+                student['Class'] = new_class
+
+            print("Student details updated successfully!\n")
+            return
+
+    print("Student not found.\n")
+
 def main():
     while True:
         print("1. Add Student")
         print("2. View Students")
         print("3. Search Student")
-        print("4. Exit")
-        choice = input("Enter your choice (1-4): ")
+        print("4. Update Student")
+        print("5. Exit")
+        choice = input("Enter your choice (1-5): ")
         if choice == '1':
             Add_student()
         elif choice == '2':
@@ -52,6 +78,8 @@ def main():
         elif choice == '3':
             Search_student()
         elif choice == '4':
+            Update_student()
+        elif choice == '5':
             print("Exiting the Student Management System. Goodbye!")
             break
         else:
