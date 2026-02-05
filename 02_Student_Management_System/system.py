@@ -63,14 +63,32 @@ def Update_student():
 
     print("Student not found.\n")
 
+
+def Delete_student():
+    delete_id = input("Enter Student ID to delete: ")
+
+    if not students:
+        print("No students found.\n")
+        return
+
+    for student in students:
+        if student['ID'] == delete_id:
+            students.remove(student)
+            print("Student deleted successfully!\n")
+            return
+
+    print("Student not found.\n")
+
+
 def main():
     while True:
         print("1. Add Student")
         print("2. View Students")
         print("3. Search Student")
         print("4. Update Student")
-        print("5. Exit")
-        choice = input("Enter your choice (1-5): ")
+        print("5. Delete Student")
+        print("6. Exit")
+        choice = input("Enter your choice (1-6): ")
         if choice == '1':
             Add_student()
         elif choice == '2':
@@ -80,6 +98,8 @@ def main():
         elif choice == '4':
             Update_student()
         elif choice == '5':
+            Delete_student()
+        elif choice == '6':
             print("Exiting the Student Management System. Goodbye!")
             break
         else:
