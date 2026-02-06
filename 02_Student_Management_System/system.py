@@ -1,4 +1,4 @@
-
+import json
 print("Welcome to the Student Management System!!!")
 print("--------------------------------------------")
 
@@ -10,15 +10,16 @@ def Add_student():
     student['Age'] = input("Enter Student Age: ")
     student['Class'] = input("Enter Student Class: ")
     students.append(student)
-    print("Student added successfully!\n")
+    print("Student added successfully!")
 
 def View_students():
     if not students:
-        print("No students found.\n")
+        print("No students found.")
         return
-    print("\nList of Students:")
+    print("List of Students:")
     for student in students:
         print(f"ID: {student['ID']}, Name: {student['Name']}, Age: {student['Age']}, Class: {student['Class']}")
+    
     print()
 
 def Search_student():
@@ -37,19 +38,16 @@ def Search_student():
     print("Student not found.\n")
 
 def Update_student():
-    update_id = input("Enter Student ID to update: ")
-
+    update_id = input("Enter the Student ID you want to update: ")
     if not students:
-        print("No students found.\n")
+        print("No students yet")
         return
-
     for student in students:
         if student['ID'] == update_id:
-            print("\nStudent Found. Enter new details (press Enter to keep old value):")
-
-            new_name = input(f"Enter new Name ({student['Name']}): ")
-            new_age = input(f"Enter new Age ({student['Age']}): ")
-            new_class = input(f"Enter new Class ({student['Class']}): ")
+            print("Student found. Proceed to update: ")
+            new_name = input(f"Enter new name (current: {student['Name']:}): ")
+            new_age = input(f"Enter new age (current: {student['Age']}): ")
+            new_class = input(f"Enter new class (current: {student['Class']}): ")
 
             if new_name:
                 student['Name'] = new_name
@@ -57,27 +55,41 @@ def Update_student():
                 student['Age'] = new_age
             if new_class:
                 student['Class'] = new_class
-
-            print("Student details updated successfully!\n")
+            print("Student details has been updated successfully!")
             return
-
-    print("Student not found.\n")
-
+    print("Student not found.")
+                         
 
 def Delete_student():
-    delete_id = input("Enter Student ID to delete: ")
-
+    delete_id = input("Enter the student ID you want to delete: ")
     if not students:
-        print("No students found.\n")
+        print("No Students yet.")
         return
-
     for student in students:
         if student['ID'] == delete_id:
             students.remove(student)
-            print("Student deleted successfully!\n")
+            print("Student has been deleted successfully!")
             return
+    print("Student not found.")
 
-    print("Student not found.\n")
+def Save_data():
+    filename = input("Enter the file name: ")
+    with open(filename, 'w', encoding = "utf-8") as file:
+        json.dump(students,file,indent=4)
+    print("Student data has been saved to the file successfully!")
+
+def Load_data():
+    filename = input("Enter the file name to load from: ")
+    try:
+        with open(filename, 'r', encoding = 'utf-8') as file:
+            global students
+            students = json.load(file)
+        print("Student data has been loaded from the file successfully!")
+
+    except FileNotFoundError:
+        print("File not found. Please try again.")
+    except json.JSONDecodeError:
+        print("File is not valid.")
 
 
 def main():
@@ -87,8 +99,10 @@ def main():
         print("3. Search Student")
         print("4. Update Student")
         print("5. Delete Student")
-        print("6. Exit")
-        choice = input("Enter your choice (1-6): ")
+        print("6. Save student data to a file")
+        print("7.Load student data from a file")
+        print("8. Exit")
+        choice = input("Enter your choice (1-8): ")
         if choice == '1':
             Add_student()
         elif choice == '2':
@@ -100,6 +114,10 @@ def main():
         elif choice == '5':
             Delete_student()
         elif choice == '6':
+            Save_data()
+        elif choice == '7':
+            Load_data()
+        elif choice == '8':
             print("Exiting the Student Management System. Goodbye!")
             break
         else:
