@@ -1,0 +1,117 @@
+import json
+
+questions = [
+    {
+        "question": "1. What is 9+7?",
+        "options": ["A. 15", "B. 16", "C. 17", "D. 14"],
+        "answer": "B"
+    },
+    {
+        "question": "2. 12-5=?",
+        "options": ["A. 7", "B. 6", "C. 8", "D. 9"],
+        "answer": "A"
+    },
+    {
+        "question": "3. Which shape has 3 sides?",
+        "options": ["A. Square", "B. Circle", "C. Triangle", "D. Rectangle"],
+        "answer": "C"
+    },
+    {
+        "question": "4. What is the number 1 less than 80?",
+        "options": ["A. 81", "B. 70", "C. 79", "D. 90"],
+        "answer": "C"
+    },
+    {
+        "question": "5. Sum of 9, 0 and 2 is:",
+        "options": ["A. 0", "B. 10", "C. 11", "D. 12"],
+        "answer": "C"
+    },
+    {
+        "question": "6. Which shape has no sides and no corners?",
+        "options": ["A. Cube", "B. Sphere", "C. Cone", "D. Rectangle"],
+        "answer": "B"
+    },
+    {
+        "question": "7. 4 tens and 9 ones make the number:",
+        "options": ["A. 49", "B. 409", "C. 94", "D. 40"],
+        "answer": "A"
+    },
+    {
+        "question": "8. 60-20=?",
+        "options": ["A. 4", "B. 40", "C. 8", "D. 80"],
+        "answer": "B"
+    },
+    {
+        "question": "9. What is the number in between 69 and 71?",
+        "options": ["A. 70", "B. 68", "C. 72", "D. 60"],
+        "answer": "A"
+    },
+    {
+        "question": "10. Which is greater: 15 or 51?",
+        "options": ["A. 15", "B. 51"],
+        "answer": "B"
+    },
+    {
+        "question": "11. The number 1 more than 72 is:",
+        "options": ["A. 73", "B. 71", "C. 74", "D. 82"],
+        "answer": "A"
+    },
+    {
+        "question": "12. 14+2=?",
+        "options": ["A. 14", "B. 15", "C. 16", "D. 17"],
+        "answer": "C"
+    }
+]
+ 
+ 
+score = 0 
+
+def Start_Quiz():
+    global score  
+    score = 0    
+
+    for que in questions:
+        print("\n" + que["question"])
+        for option in que["options"]:
+            print(option)
+
+        answer = input("Enter your answer(A/B/C/D): ").upper()
+        if answer == que["answer"].upper():
+            print("Correct!")
+            score += 1
+        else:
+            print(f"Wrong. The correct answer is {que['answer']}")
+    
+
+def View_Score():
+
+    print(f"Your last quiz score was = {score}/{len(questions)}")
+
+
+#def Add_Que():
+#def Exit():
+
+def main():
+   
+    while True:
+         print("Welcome to the Quiz Game")
+         print("--------------------------")
+         print("1.Start Quiz")
+         print("2.Add question")
+         print("3.View Score")
+         print("4.Exit")
+
+         choice = input("Enter your choice(1-4): ")
+
+         if choice == '1':
+              Start_Quiz()
+        #elif choice == '2':
+             #Add_Que()
+         elif choice == '3':
+             View_Score()
+        #elif choice == '4':
+        #    Exit()
+        #      break
+         else:
+              print("Invalid choice. Please try again.")
+main()
