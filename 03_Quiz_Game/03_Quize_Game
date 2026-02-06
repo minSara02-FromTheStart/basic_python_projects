@@ -109,9 +109,8 @@ def main():
              #Add_Que()
          elif choice == '3':
              View_Score()
-        #elif choice == '4':
-        #    Exit()
-        #      break
+         elif choice == '4':
+              break
          else:
               print("Invalid choice. Please try again.")
 main()
