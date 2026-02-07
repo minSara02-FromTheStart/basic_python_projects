@@ -87,9 +87,32 @@ def View_Score():
 
     print(f"Your last quiz score was = {score}/{len(questions)}")
 
+def save_Questions():
+    filename = input("Enter file name: ")
+    with open(filename, "w", encoding = "utf-8") as file:
+        json.dump(questions,file,indent=4)
+    print("Saving Questions has been successful.")
 
-#def Add_Que():
-#def Exit():
+def Add_Que():
+    print("Add new Question")
+    new_Q = input("Enter new Question: ")
+
+    options= []
+    options.append("A. " + input("Option A = "))
+    options.append("B. " + input("Option B = "))
+    options.append("C. " + input("Option C = "))
+    options.append("D. " + input("Option D = "))
+
+    ans = input("Enter correct ans(A/B/C/D): ").upper()
+
+    new_Question = { 
+                     "question": new_Q,
+                     "options": options,
+                     "answer": ans 
+                    }
+    questions.append(new_Question)
+    save_Questions()
+
 
 def main():
    
@@ -97,19 +120,22 @@ def main():
          print("Welcome to the Quiz Game")
          print("--------------------------")
          print("1.Start Quiz")
-         print("2.Add question")
-         print("3.View Score")
-         print("4.Exit")
+         print("2.Save Questions")
+         print("3.Add Question")
+         print("4.View Score")
+         print("5.Exit")
 
          choice = input("Enter your choice(1-4): ")
 
          if choice == '1':
               Start_Quiz()
-        #elif choice == '2':
-             #Add_Que()
+         elif choice == '2':
+             save_Questions
          elif choice == '3':
-             View_Score()
+             Add_Que()
          elif choice == '4':
+              View_Score()
+         elif choice == '5':
               break
          else:
               print("Invalid choice. Please try again.")

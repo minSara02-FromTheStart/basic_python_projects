@@ -41,10 +41,6 @@ def save_to_file(filename="expenses.txt"):
             file.write(f"{expense['Amount']},{expense['Category']},{expense['Note']}\n")
 
 
-    
-
-
-
 def menu():
     while True:
         print("-------Expense Tracker Menu------")
