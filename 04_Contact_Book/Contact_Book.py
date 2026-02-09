@@ -1,7 +1,7 @@
 import json
 
 contacts = []
-Filename = "contact.json"
+Filename = "04_Contact_Book/contact.json"
 
 def save_contact():
     
@@ -17,7 +17,7 @@ def load_Contact():
              contacts = json.load(file)
              print("Contacts have been loaded from the file successfully!")
              return contacts
-        print("Contacts has been loaded from the file successfully!")
+        
     except FileNotFoundError:
         print("File Not found. Please try again.")
         contacts = []
@@ -61,6 +61,46 @@ def Search_Contact():
 
     print("ID not found")
 
+def delete_contact():
+    delete_id = input("Enter the ID you want to delete.")
+
+    if not contacts:
+        print("No contact yet")
+        return
+    for contact in contacts:
+        if contact['id'] == delete_id:
+            contacts.remove(contact)
+            save_contact()
+            print("Deleting is  Successful")
+            return 
+    print("contact is not found")
+
+def update_contact():
+    
+    if not contacts:
+        print("No contact found.")
+        return
+
+    update_id = input("Enter ID to update: ")
+
+    for contact in contacts:
+        if contact['id'] == update_id:
+            print("Leave blank to keep existing value.")
+            new_name =input("enter new name: ")
+            new_phone =input("enter new_phone: ")
+            new_email = input("enter new_email: ")
+            if new_name:
+                contact['name'] = new_name
+            if new_phone:
+                contact['phone'] = new_phone
+            if new_email:
+                contact['email'] = new_email
+            save_contact()
+            print("Contact updated successfully!")
+            return
+
+    print("ID not found. No contact updated.")
+
 
 def main():
     
@@ -84,6 +124,10 @@ def main():
             View_Contacts()
         elif option == '4':
             Search_Contact()
+        elif option =='5':
+            update_contact()
+        elif option == '6':
+            delete_contact()
         elif option == '7':
             print("Existing succesfully from the contact book")            
             break
