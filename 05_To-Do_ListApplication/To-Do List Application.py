@@ -1,4 +1,23 @@
+import json
+
 tasks = []
+FileName = ("05_To-Do_ListApplication/To-Do_list.json")
+def save_task():
+    with open(FileName, "w", encoding = "utf-8") as File:
+        json.dump(tasks,File,indent=4)
+    print("Task saves successfully.")
+
+def load_task():
+    global tasks
+    try:
+        with open(FileName, "r", encoding = "utf-8") as File:
+            tasks = json.load(File)
+        print("Tasks Loaded Successfully.")
+    except FileNotFoundError:
+        tasks = []
+        print("No Task Found. Start Fresh")
+
+
 def add_task():
     task_description = input("Enter the description of the task: ")
     task = {
@@ -6,8 +25,8 @@ def add_task():
         "Complete": False
     }
     tasks.append(task)
+    save_task()
     print("Task added successfully")
-
 
 def view_task():
     if not tasks:
@@ -22,7 +41,8 @@ def view_task():
         print (f"{idx}.{task['Task Description']} [{status}]")
 #def mark_task():
 #def delete_task():
-#def save_task():
+
+
 
 
 
@@ -40,7 +60,7 @@ def main():
 
          print("4.Delete Task ")
 
-         print("5.Save/Load Tasks to File ")
+         print("5.Load Tasks to File ")
 
          print("6.Priority Levels ")
 
@@ -53,14 +73,13 @@ def main():
          print("10.Exit Program ")
          print()
     
-
-    
          option = (input("Please choose you desire option: "))
          if option == '1':
             add_task()
-            
          elif option =='2':
             view_task()
+         elif option == '5':
+             load_task()
          elif option == '10':
              break
          else:
