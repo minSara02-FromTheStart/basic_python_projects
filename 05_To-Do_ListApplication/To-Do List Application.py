@@ -17,7 +17,6 @@ def load_task():
         tasks = []
         print("No Task Found. Start Fresh")
 
-
 def add_task():
     task_description = input("Enter the description of the task: ")
     task = {
@@ -39,8 +38,24 @@ def view_task():
             status = "Pending"
    
         print (f"{idx}.{task['Task Description']} [{status}]")
-#def mark_task():
-#def delete_task():
+def mark_task():
+    if not tasks:
+        print("No task yet.")
+        return
+    view_task()
+    try:
+        task_no = int(input("Enter the task number you want to mark as complete: "))
+        if 1<=task_no<=len(tasks):
+            tasks[task_no - 1]["complete"] = True
+            save_task()
+            print("Task marked as completed")
+        else:
+            print("Invalid task number.")
+    except ValueError:
+        print("Please enter a valid number.")
+
+def delete_task():
+
 
 
 
@@ -78,6 +93,10 @@ def main():
             add_task()
          elif option =='2':
             view_task()
+         elif option == '3':
+             mark_task()
+         elif option == '4':
+             delete_task()
          elif option == '5':
              load_task()
          elif option == '10':
