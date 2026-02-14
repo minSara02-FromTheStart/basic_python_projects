@@ -54,12 +54,22 @@ def mark_task():
     except ValueError:
         print("Please enter a valid number.")
 
-#def delete_task():
+def delete_task():
+    if not tasks:
+        print("no task yet.")
+        return
+    view_task()
 
-
-
-
-
+    try:
+        delete_no = int(input("Enter the task number you want to delete: "))
+        if 1<= delete_no <= len(tasks):
+            deleted = tasks.pop[delete_no-1]
+            save_task()
+            print("Task deleted")
+        else:
+            print("Invalid Choice. Please Try again")
+    except ValueError:
+        print("Please enter a valid number.")
 
 
 def main():
@@ -95,8 +105,8 @@ def main():
             view_task()
          elif option == '3':
              mark_task()
-        #elif option == '4':
-        #   delete_task()
+         elif option == '4':
+             delete_task()
          elif option == '5':
              load_task()
          elif option == '10':
