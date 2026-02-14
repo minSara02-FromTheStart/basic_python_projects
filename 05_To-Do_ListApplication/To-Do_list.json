@@ -1,33 +1,29 @@
 [
     {
         "Task Description": "wake up at 8",
-        "Complete": false,
+        "Complete": true,
         "complete": true
     },
     {
         "Task Description": "get fresh by 8.30",
-        "Complete": false,
+        "Complete": true,
         "complete": true
     },
     {
         "Task Description": "breakfast at 9",
-        "Complete": false
-    },
-    {
-        "Task Description": "",
-        "Complete": false
+        "Complete": true
     },
     {
         "Task Description": "going school by 10",
-        "Complete": false
+        "Complete": true
     },
     {
         "Task Description": "school ends at 2 ",
-        "Complete": false
+        "Complete": true
     },
     {
         "Task Description": "back at home by 3",
-        "Complete": false
+        "Complete": true
     },
     {
         "Task Description": "bath & lunch finishes by 4",
@@ -39,6 +35,10 @@
     },
     {
         "Task Description": "all finish by 7 ",
+        "Complete": false
+    },
+    {
+        "Task Description": "home by 8",
         "Complete": false
     }
 ]

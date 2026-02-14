@@ -46,7 +46,7 @@ def mark_task():
     try:
         task_no = int(input("Enter the task number you want to mark as complete: "))
         if 1<=task_no<=len(tasks):
-            tasks[task_no - 1]["complete"] = True
+            tasks[task_no - 1]["Complete"] = True
             save_task()
             print("Task marked as completed")
         else:
@@ -63,7 +63,7 @@ def delete_task():
     try:
         delete_no = int(input("Enter the task number you want to delete: "))
         if 1<= delete_no <= len(tasks):
-            deleted = tasks.pop[delete_no-1]
+            deleted = tasks.pop(delete_no-1)
             save_task()
             print("Task deleted")
         else:
