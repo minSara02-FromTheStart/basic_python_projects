@@ -54,7 +54,7 @@ def mark_task():
     except ValueError:
         print("Please enter a valid number.")
 
-def delete_task():
+#def delete_task():
 
 
 
@@ -95,8 +95,8 @@ def main():
             view_task()
          elif option == '3':
              mark_task()
-         elif option == '4':
-             delete_task()
+        #elif option == '4':
+        #   delete_task()
          elif option == '5':
              load_task()
          elif option == '10':
