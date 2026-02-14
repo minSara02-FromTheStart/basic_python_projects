@@ -97,6 +97,7 @@ def edit_task():
 
 
 def main():
+    load_task()
     while True:
          print("Welcome to your To-Do List")
          print("---------------------------")
@@ -109,11 +110,10 @@ def main():
 
          print("4.Delete Task ")
 
-         print("5.Load Tasks to File ")
+         print("5.Edit Task ")
 
-         print("6.Edit Task ")
+         print("6.Exit Program  ")
 
-         print("7.Exit Program ")
          print()
     
          option = (input("Please choose you desire option: "))
@@ -126,11 +126,9 @@ def main():
          elif option == '4':
              delete_task()
          elif option == '5':
-             load_task()
-         elif option == '6':
              edit_task()
-         elif option == '7':
-             break
+         elif option == '6':
+             break    
          else:
             print("Invalid Option. Please Try Again.")
 main()
