@@ -71,6 +71,30 @@ def delete_task():
     except ValueError:
         print("Please enter a valid number.")
 
+def edit_task():
+    if not tasks:
+        print("no task yet")
+        return
+    view_task()
+    try:
+        edit_no = int(input("enter the task you want to edit: "))
+        if 1<= edit_no <= len(tasks):
+            task = tasks[edit_no - 1]
+            new_description = input("Enter new description(blank if you want to keep the same):  ")
+            new_Complete = input("Enter complete or not(yes/No): ").strip().lower()
+            if new_description:
+                task["Task Description"] = new_description
+            if new_Complete == "yes":
+                task["Complete"] = True
+            elif new_Complete == "no":
+                task["Complete"] = False
+            save_task()
+            print("Editing Done")
+        else:
+            print("Invalid choice")
+    except ValueError:
+        print("Please Enter an Valid Choice")
+
 
 def main():
     while True:
@@ -87,15 +111,9 @@ def main():
 
          print("5.Load Tasks to File ")
 
-         print("6.Priority Levels ")
+         print("6.Edit Task ")
 
-         print("7.Due Date ")
-
-         print("8.Edit Task ")
-
-         print("9.Filter Tasks ")
-
-         print("10.Exit Program ")
+         print("7.Exit Program ")
          print()
     
          option = (input("Please choose you desire option: "))
@@ -109,7 +127,9 @@ def main():
              delete_task()
          elif option == '5':
              load_task()
-         elif option == '10':
+         elif option == '6':
+             edit_task()
+         elif option == '7':
              break
          else:
             print("Invalid Option. Please Try Again.")
